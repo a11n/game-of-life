@@ -29,7 +29,34 @@ public class Grid {
   }
 
   public Cell cellAt(int x, int y) {
+    if (x < 0 || y < 0 || x >= size() || y >= size()) {
+      throw new IllegalArgumentException(
+          String.format("Coordinates (%d, %d) out of grid bounds (%d, %d)", x, y, size(), size()));
+    }
+
     return grid[x][y];
+  }
+
+  public int size() {
+    return grid.length;
+  }
+
+  public int countLivingNeighbors(int x, int y) {
+    int livingNeighborsCount = 0;
+
+    for (int i = x - 1; i < x + 1; i++) {
+      for (int j = y - 1; j < y + 1; j++) {
+        try {
+          Cell cell = cellAt(i,j);
+          if(cell.isAlive)
+            livingNeighborsCount++;
+        } catch (IllegalArgumentException e){
+          //Cells outside of the grid are considered as dead.
+        }
+      }
+    }
+
+    return livingNeighborsCount;
   }
 
   public static class Cell {
@@ -39,11 +66,11 @@ public class Grid {
       this.isAlive = isAlive;
     }
 
-    public static Cell createLivingCell(){
+    public static Cell createLivingCell() {
       return new Cell(true);
     }
-    
-    public static Cell createDeadCell(){
+
+    public static Cell createDeadCell() {
       return new Cell(false);
     }
 
@@ -57,6 +84,10 @@ public class Grid {
 
     public void reproduce() {
       isAlive = true;
+    }
+
+    public void die() {
+      isAlive = false;
     }
   }
 }

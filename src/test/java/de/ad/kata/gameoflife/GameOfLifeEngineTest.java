@@ -16,9 +16,9 @@ public class GameOfLifeEngineTest {
     Grid grid = initGridWithOneLivingCellAndOneLivingNeighbor();
     GameOfLifeEngine engine = new GameOfLifeEngine();
     
-    engine.computeNextGeneration(grid);
+    Grid nextGeneration = engine.computeNextGeneration(grid);
     
-    assertTrue(grid.cellAt(1,1).isDead());
+    assertTrue(nextGeneration.cellAt(1,1).isDead());
   }
 
   private Grid initGridWithOneLivingCellAndOneLivingNeighbor() {
