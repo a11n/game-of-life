@@ -17,7 +17,7 @@ public class GameOfLifeEngine {
         String status = presentCell.isAlive() ? "alive" : "dead";
         log("Cell (%d,%d) is %s and has %d living neighbor(s).", x, y, status, livingNeighborsCount);
 
-        if (livingNeighborsCount < 2) {
+        if (presentCell.isAlive() && livingNeighborsCount < 2) {
           log("...dies in next generation :-( (under-population)");
           futureCell.die();
         }
