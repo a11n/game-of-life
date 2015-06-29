@@ -57,6 +57,7 @@ public class GameOfLifeEngineTest {
     Grid grid = new Grid(9);
 
     grid.cellAt(1,1).reproduce(); //living cell
+    grid.cellAt(0,0).reproduce(); //living neighbor
     grid.cellAt(0,2).reproduce(); //living neighbor
     grid.cellAt(2,0).reproduce(); //living neighbor
 

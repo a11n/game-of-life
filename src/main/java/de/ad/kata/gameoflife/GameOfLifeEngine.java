@@ -15,11 +15,16 @@ public class GameOfLifeEngine {
         int livingNeighborsCount = currentGeneration.countLivingNeighbors(x, y);
 
         String status = presentCell.isAlive() ? "alive" : "dead";
-        log("Cell (%d,%d) is %s and has %d living neighbor(s).", x, y, status, livingNeighborsCount);
+        log("Cell (%d,%d) is %s and has %d living neighbor(s).", x, y, status,
+            livingNeighborsCount);
 
         if (presentCell.isAlive() && livingNeighborsCount < 2) {
           log("...dies in next generation :-( (under-population)");
           futureCell.die();
+        }
+        if (presentCell.isAlive() && (livingNeighborsCount == 2 || livingNeighborsCount == 3)) {
+          log("...lives in next generation :-)");
+          futureCell.reproduce();
         }
       }
     }
