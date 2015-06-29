@@ -57,8 +57,12 @@ public class Grid {
   public int countLivingNeighbors(int x, int y) {
     int livingNeighborsCount = 0;
 
-    for (int i = x - 1; i < x + 1; i++) {
-      for (int j = y - 1; j < y + 1; j++) {
+    for (int i = x - 1; i <= x + 1; i++) {
+      for (int j = y - 1; j <= y + 1; j++) {
+        //don't count actual cell as neighbor
+        if(i == x && j == y)
+          continue;
+        
         try {
           Cell cell = cellAt(i,j);
           if(cell.isAlive)
