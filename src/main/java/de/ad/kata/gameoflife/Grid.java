@@ -40,6 +40,19 @@ public class Grid {
   public int size() {
     return grid.length;
   }
+  
+  public int countLivingCells(){
+    int livingCellsCount = 0;
+
+    for (int x = 0; x < size(); x++) {
+      for (int y = 0; y < size(); y++) {
+        if(cellAt(x,y).isAlive)
+          livingCellsCount++;
+      }
+    }
+
+    return livingCellsCount;
+  }
 
   public int countLivingNeighbors(int x, int y) {
     int livingNeighborsCount = 0;
