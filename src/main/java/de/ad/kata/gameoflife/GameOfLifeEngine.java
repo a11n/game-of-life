@@ -3,7 +3,7 @@ package de.ad.kata.gameoflife;
 public class GameOfLifeEngine {
   public Grid computeNextGeneration(Grid currentGeneration) {
     log("Current population (%d,%d).", currentGeneration.countLivingCells(),
-        currentGeneration.size());
+        currentGeneration.cellCount());
 
     Grid nextGeneration = new Grid(currentGeneration.size());
 

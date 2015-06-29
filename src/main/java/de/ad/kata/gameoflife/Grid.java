@@ -41,6 +41,10 @@ public class Grid {
     return grid.length;
   }
   
+  public int cellCount(){
+    return size() * size();
+  }
+  
   public int countLivingCells(){
     int livingCellsCount = 0;
 
