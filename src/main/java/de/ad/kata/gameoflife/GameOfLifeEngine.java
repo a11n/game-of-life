@@ -1,6 +1,13 @@
 package de.ad.kata.gameoflife;
 
 public class GameOfLifeEngine {
+
+  private int generation;
+
+  public GameOfLifeEngine() {
+    generation = 0;
+  }
+
   public Grid computeNextGeneration(Grid currentGeneration) {
     logGridDetails(currentGeneration);
 
@@ -17,6 +24,8 @@ public class GameOfLifeEngine {
         applyRules(presentCell, futureCell, livingNeighborsCount);
       }
     }
+
+    generation++;
 
     return nextGeneration;
   }
@@ -57,7 +66,7 @@ public class GameOfLifeEngine {
   }
 
   private void logGridDetails(Grid currentGeneration) {
-    log("Current population (%d,%d).", currentGeneration.countLivingCells(),
+    log("Generation #%d: population %d/%d", generation, currentGeneration.countLivingCells(),
         currentGeneration.cellCount());
   }
 
