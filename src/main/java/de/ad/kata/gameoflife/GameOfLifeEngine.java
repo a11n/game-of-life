@@ -2,8 +2,7 @@ package de.ad.kata.gameoflife;
 
 public class GameOfLifeEngine {
   public Grid computeNextGeneration(Grid currentGeneration) {
-    log("Current population (%d,%d).", currentGeneration.countLivingCells(),
-        currentGeneration.cellCount());
+    logGridDetails(currentGeneration);
 
     Grid nextGeneration = new Grid(currentGeneration.size());
 
@@ -11,33 +10,61 @@ public class GameOfLifeEngine {
       for (int y = 0; y < currentGeneration.size(); y++) {
         Grid.Cell presentCell = currentGeneration.cellAt(x, y);
         Grid.Cell futureCell = nextGeneration.cellAt(x, y);
-
         int livingNeighborsCount = currentGeneration.countLivingNeighbors(x, y);
 
-        String status = presentCell.isAlive() ? "alive" : "dead";
-        log("Cell (%d,%d) is %s and has %d living neighbor(s).", x, y, status,
-            livingNeighborsCount);
+        logCellDetails(x, y, presentCell, livingNeighborsCount);
 
-        if (presentCell.isAlive() && livingNeighborsCount < 2) {
-          log("...dies in next generation :-( (under-population)");
-          futureCell.die();
-        }
-        if (presentCell.isAlive() && (livingNeighborsCount == 2 || livingNeighborsCount == 3)) {
-          log("...lives in next generation :-)");
-          futureCell.reproduce();
-        }
-        if (presentCell.isAlive() && livingNeighborsCount > 3) {
-          log("...dies in next generation :-( (overcrowding)");
-          futureCell.die();
-        }
-        if (presentCell.isDead() && livingNeighborsCount == 3) {
-          log("...lives in next generation :-) (reproduction)");
-          futureCell.reproduce();
-        }
+        applyRules(presentCell, futureCell, livingNeighborsCount);
       }
     }
 
     return nextGeneration;
+  }
+
+  private void applyRules(Grid.Cell presentCell, Grid.Cell futureCell, int livingNeighborsCount) {
+    applyRule1(presentCell, futureCell, livingNeighborsCount);
+    applyRule2(presentCell, futureCell, livingNeighborsCount);
+    applyRule3(presentCell, futureCell, livingNeighborsCount);
+    applyRule4(presentCell, futureCell, livingNeighborsCount);
+  }
+
+  private void applyRule1(Grid.Cell presentCell, Grid.Cell futureCell, int livingNeighborsCount) {
+    if (presentCell.isAlive() && livingNeighborsCount < 2) {
+      log("...dies in next generation :-( (under-population)");
+      futureCell.die();
+    }
+  }
+
+  private void applyRule2(Grid.Cell presentCell, Grid.Cell futureCell, int livingNeighborsCount) {
+    if (presentCell.isAlive() && (livingNeighborsCount == 2 || livingNeighborsCount == 3)) {
+      log("...lives in next generation :-)");
+      futureCell.reproduce();
+    }
+  }
+
+  private void applyRule3(Grid.Cell presentCell, Grid.Cell futureCell, int livingNeighborsCount) {
+    if (presentCell.isAlive() && livingNeighborsCount > 3) {
+      log("...dies in next generation :-( (overcrowding)");
+      futureCell.die();
+    }
+  }
+
+  private void applyRule4(Grid.Cell presentCell, Grid.Cell futureCell, int livingNeighborsCount) {
+    if (presentCell.isDead() && livingNeighborsCount == 3) {
+      log("...lives in next generation :-) (reproduction)");
+      futureCell.reproduce();
+    }
+  }
+
+  private void logGridDetails(Grid currentGeneration) {
+    log("Current population (%d,%d).", currentGeneration.countLivingCells(),
+        currentGeneration.cellCount());
+  }
+
+  private void logCellDetails(int x, int y, Grid.Cell presentCell, int livingNeighborsCount) {
+    String status = presentCell.isAlive() ? "alive" : "dead";
+    log("Cell (%d,%d) is %s and has %d living neighbor(s).", x, y, status,
+        livingNeighborsCount);
   }
 
   private void log(String pattern, Object... values) {
