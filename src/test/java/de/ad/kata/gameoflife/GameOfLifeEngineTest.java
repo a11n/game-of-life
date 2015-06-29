@@ -44,6 +44,21 @@ public class GameOfLifeEngineTest {
     assertTrue(nextGeneration.cellAt(1, 1).isAlive());
   }
 
+  /**
+   * Rule 3:
+   * Any live cell with more than three live neighbours dies, as if by overcrowding.
+   *
+   * @throws Exception
+   */
+  @Test
+  public void testThirdRule() throws Exception {
+    Grid grid = initGridWithOneLivingCellAndFourLivingNeighbors();
+
+    Grid nextGeneration = engine.computeNextGeneration(grid);
+
+    assertTrue(nextGeneration.cellAt(1,1).isDead());
+  }
+  
   private Grid initGridWithOneLivingCellAndOneLivingNeighbor() {
     Grid grid = new Grid(3);
     
@@ -60,6 +75,18 @@ public class GameOfLifeEngineTest {
     grid.cellAt(0,0).reproduce(); //living neighbor
     grid.cellAt(0,2).reproduce(); //living neighbor
     grid.cellAt(2,0).reproduce(); //living neighbor
+
+    return grid;
+  }
+
+  private Grid initGridWithOneLivingCellAndFourLivingNeighbors() {
+    Grid grid = new Grid(3);
+
+    grid.cellAt(1,1).reproduce(); //living cell
+    grid.cellAt(0,0).reproduce(); //living neighbor
+    grid.cellAt(0,2).reproduce(); //living neighbor
+    grid.cellAt(2,0).reproduce(); //living neighbor
+    grid.cellAt(2,2).reproduce(); //living neighbor
 
     return grid;
   }

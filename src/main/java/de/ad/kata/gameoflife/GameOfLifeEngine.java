@@ -26,6 +26,10 @@ public class GameOfLifeEngine {
           log("...lives in next generation :-)");
           futureCell.reproduce();
         }
+        if (presentCell.isAlive() && livingNeighborsCount > 3) {
+          log("...dies in next generation :-( (overcrowding)");
+          futureCell.die();
+        }
       }
     }
 
