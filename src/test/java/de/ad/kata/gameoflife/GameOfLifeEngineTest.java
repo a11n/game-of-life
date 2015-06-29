@@ -5,14 +5,28 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class GameOfLifeEngineTest {
+  /**
+   * Rule 1:
+   * Any live cell with fewer than two live neighbors dies, as if caused by under-population.
+   * 
+   * @throws Exception
+   */
   @Test
-  public void testComputeNextGeneration() throws Exception {
-    Grid grid = new Grid(16);
-    Grid expected = new Grid(16);
+  public void testFirstRule() throws Exception {
+    Grid grid = initGridWithOneLivingCellAndOneLivingNeighbor();
     GameOfLifeEngine engine = new GameOfLifeEngine();
     
     engine.computeNextGeneration(grid);
     
-    assertTrue(expected.equals(grid));
+    assertTrue(grid.cellAt(1,1).isDead());
+  }
+
+  private Grid initGridWithOneLivingCellAndOneLivingNeighbor() {
+    Grid grid = new Grid(9);
+    
+    grid.cellAt(1,1).reproduce(); //living cell
+    grid.cellAt(0,0).reproduce(); //living neighbor
+    
+    return grid;
   }
 }
