@@ -45,7 +45,7 @@ public class GameOfLifeEngineTest {
   }
 
   private Grid initGridWithOneLivingCellAndOneLivingNeighbor() {
-    Grid grid = new Grid(9);
+    Grid grid = new Grid(3);
     
     grid.cellAt(1,1).reproduce(); //living cell
     grid.cellAt(0,0).reproduce(); //living neighbor
@@ -54,7 +54,7 @@ public class GameOfLifeEngineTest {
   }
 
   private Grid initGridWithOneLivingCellAndThreeLivingNeighbors() {
-    Grid grid = new Grid(9);
+    Grid grid = new Grid(3);
 
     grid.cellAt(1,1).reproduce(); //living cell
     grid.cellAt(0,0).reproduce(); //living neighbor
