@@ -14,11 +14,13 @@ public interface GameOfLifeDisplay {
     }
   
     @Override public void display(Grid grid) {
+      System.out.println();
+      
       for (int x = 0; x < grid.size(); x++) {
         for (int y = 0; y < grid.size(); y++) {
           Grid.Cell cell = grid.cellAt(x,y);
           
-          String output = cell.isAlive() ? "X " : "O ";
+          String output = cell.isAlive() ? "o " : ". ";
           out.print(output);
         }
         
