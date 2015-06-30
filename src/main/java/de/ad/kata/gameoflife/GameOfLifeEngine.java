@@ -77,6 +77,6 @@ public class GameOfLifeEngine {
   }
 
   private void log(String pattern, Object... values) {
-    System.out.println(String.format(pattern, values));
+    //System.out.println(String.format(pattern, values));
   }
 }
