@@ -1,6 +1,10 @@
+apply plugin: 'application'
 apply plugin: 'java'
 apply plugin: 'jacoco'
+
 version = '1.0'
+
+mainClassName = 'de.ad.kata.gameoflife.Application'
 
 repositories {
     mavenCentral()
