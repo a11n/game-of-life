@@ -1,7 +1,7 @@
 # game-of-life
 Game of Life kata
 
-![Game of Life animation](grid.gif)
+![Game of Life animation](game.gif)
 
 ## What is the Game of Life?
 *(Source: [Wikipedia](https://en.wikipedia.org/wiki/Conway's_Game_of_Life))*
