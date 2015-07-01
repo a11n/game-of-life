@@ -1,19 +1,7 @@
 # game-of-life
 Game of Life kata
 
-```shell
-1. Generation         2. Generation         ...   10. Generation
-o o . o . . o o o .   o o . o . . o . o .         . . . . . . . . . . 
-. o o o . . o . o .   . . . . . . o . . .         . . . . . . . . . . 
-. o o o o o . . o o   o . . . . . . . . .         . . . . . . . o o . 
-. o o o . o o o o o   o . . . . . o . . .         . . . . . . o o . o
-. o o o o . . . o o   . . . . . . . . . .         . . . . . o . o . . 
-o o . o o o . . o o   o . . . . . . o o o         . . . . . . . . . . 
-. . o . o . o . . .   o . . . . . o . . .         . . . . o . o . . .
-. o . o o . o . o o   . o o . . . o o . .         . . . . . o . . . .
-o . . . o o . . . .   o . . . . . . . . o         . . . . . o . . . . 
-o o . o . o o o . o   o o . . . o o . . .         . . . . . . . . . . 
-```
+![Game of Life animation](grid.gif)
 
 ## What is the Game of Life?
 *(Source: [Wikipedia](https://en.wikipedia.org/wiki/Conway's_Game_of_Life))*
