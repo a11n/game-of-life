@@ -90,6 +90,7 @@ public interface GameOfLifeDisplay {
       try {
         animatedGifEncoder.start(new FileOutputStream(new File("game.gif")));
         animatedGifEncoder.setDelay(250);
+        animatedGifEncoder.setRepeat(0);
         for (BufferedImage frame : frames) {
           animatedGifEncoder.addFrame(frame);
         }

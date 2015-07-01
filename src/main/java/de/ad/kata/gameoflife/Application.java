@@ -3,7 +3,7 @@ package de.ad.kata.gameoflife;
 public class Application {
 
   static Application application = new Application(new GameOfLifeEngine(),
-      new GameOfLifeDisplay.GameOfLifeGifDisplay(800), generateInitialPopulation());
+      new GameOfLifeDisplay.GameOfLifeGifDisplay(200), generateInitialPopulation());
 
   private final GameOfLifeEngine engine;
   private final GameOfLifeDisplay display;
