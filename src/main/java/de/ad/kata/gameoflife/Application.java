@@ -3,7 +3,7 @@ package de.ad.kata.gameoflife;
 public class Application {
 
   static Application application = new Application(new GameOfLifeEngine(),
-      new GameOfLifeDisplay.GameOfLifeConsoleDisplay(System.out), generateInitialPopulation());
+      new GameOfLifeDisplay.GameOfLifeGifDisplay(800), generateInitialPopulation());
 
   private final GameOfLifeEngine engine;
   private final GameOfLifeDisplay display;
@@ -23,11 +23,13 @@ public class Application {
     Grid currentPopulation = initialPopulation;
     display.display(currentPopulation);
 
-    for (int i = 0; i < 10; i++) {
+    display.switchOn();
+    for (int i = 0; i < 20; i++) {
       currentPopulation = engine.computeNextGeneration(currentPopulation);
       display.display(currentPopulation);
       sleep();
     }
+    display.switchOff();
   }
 
   static Grid generateInitialPopulation() {
